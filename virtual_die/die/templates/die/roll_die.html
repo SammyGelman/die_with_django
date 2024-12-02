@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Die</title>
+</head>
+<body>
+    <h1>Roll the Die</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Roll</button>
+    </form>
+
+    <div>
+        {% if roll_result %}
+            <img src="{% static 'images/die' %}{{ roll_result }}.png" alt="Die Face {{ roll_result }}">
+        {% else %}
+            <p>Roll the die</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+
